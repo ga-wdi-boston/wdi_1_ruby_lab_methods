@@ -23,15 +23,22 @@ end_line = gets.chomp.to_sym
 puts "Which station are you getting off?"
 end_station = gets.chomp
 
-start_index = lines[start_line].index(start_station)
-intersection_index_on_start_line = lines[start_line].index(INTERSECTION)
-start_distance = (start_index - intersection_index_on_start_line).abs
+if start_line == end_line
+  start_index = lines[start_line].index(start_station)
+  end_index = lines[end_line].index(end_station)
 
-end_index = lines[end_line].index(end_station)
-intersection_index_on_end_line = lines[end_line].index(INTERSECTION)
-end_distance = (end_index - intersection_index_on_end_line).abs
+  total_distance = (start_index - end_index).abs
+else
+  start_index = lines[start_line].index(start_station)
+  intersection_index_on_start_line = lines[start_line].index(INTERSECTION)
+  start_distance = (start_index - intersection_index_on_start_line).abs
 
-total_distance = start_distance + end_distance
+  end_index = lines[end_line].index(end_station)
+  intersection_index_on_end_line = lines[end_line].index(INTERSECTION)
+  end_distance = (end_index - intersection_index_on_end_line).abs
+
+  total_distance = start_distance + end_distance
+end
 
 puts "The distance is: #{total_distance}"
 ```
