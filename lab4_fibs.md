@@ -1,4 +1,4 @@
-## Lab 5: Fibonacci's Revenge
+## Lab 4: Fibonacci's Revenge
 
 Consider the [Fibonacci sequence](http://en.wikipedia.org/wiki/Fibonacci_number): 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, etc. Each term is obtained by adding the two terms before it, except for the first two terms, which are always 1.
 

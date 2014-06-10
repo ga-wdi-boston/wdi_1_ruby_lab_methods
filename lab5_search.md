@@ -1,4 +1,4 @@
-## Lab 6: Needle in a Haystack
+## Lab 5: Needle in a Haystack
 
 Add this code to a new Ruby file:
 
