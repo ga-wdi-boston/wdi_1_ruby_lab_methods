@@ -1,7 +1,7 @@
 require 'pry'
 
 def prime?(number)
-  (2..(number - 1)).each do |divisor|
+  (2...number).each do |divisor|
     if number % divisor == 0
       return false
     end
@@ -12,7 +12,7 @@ end
 
 # Crazy one-line version
 # def prime?(number)
-#   !(2..(number - 1)).any?{ |divisor| number % divisor == 0 }
+#   (2...number).all?{ |divisor| number % divisor != 0 }
 # end
 
 binding.pry
