@@ -122,7 +122,28 @@ For example:
 greet() #=> 'Hello, World!'
 greet('Kim') #=> 'Hello, Kim!'
 
-### Problem 2: Calculate primes within a range
+### Problem 2: Transaction Cost Calculator
+
+Write a method that will return the total cost for a transaction, factoring in tax and shipping charges, given the price of an item.
+
+The default tax is 5%, however this can be passed in optionally as a different tax (perhaps a non-profit needs 0%).
+
+The default shipping fee is 2.99 and isn't taxed additionally, but this may be adjusted when calling the method.
+
+An *discount* should be another optional field, which could be used to adjust the base price of the item in question. By default this is 0.
+
+Since there are a lot of numbers here, and they are hard to keep track of we should use keyword arguments to keep track of which is which.
+
+For example:
+
+```ruby
+total_cost(price: 10.00) #=> 13.49, since (10.00 * 1.05) + 2.99 == 13.49
+total_cost(price: 10.00, shipping_fee: 5.99)
+total_cost(price: 10.00, tax_rate: 5.0)
+total_cost(price: 10.00, tax_rate: 5.0, discount: 2.00, shipping_fee: 1.99)
+```
+
+### Problem 3: Calculate primes within a range
 
 Given a range of integers such as (20..100) return an array of all valid prime numbers.
 
