@@ -119,8 +119,10 @@ such as 'Hello, Sam!'
 
 For example:
 
+```ruby
 greet() #=> 'Hello, World!'
 greet('Kim') #=> 'Hello, Kim!'
+```
 
 ### Problem 2: Transaction Cost Calculator
 
