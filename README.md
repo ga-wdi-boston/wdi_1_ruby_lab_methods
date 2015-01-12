@@ -1,30 +1,134 @@
 ![General Assembly Logo](http://i.imgur.com/ke8USTq.png)
 
-# Assignment Name (Ruby String Lab)
+# Ruby Methods Lab
 
 ## Objectives
 
 By the end of this, students should be able to:
 
-- Objective 1
-- Objective 2
-- Objective 3
+- Use Test Driven Development to guide the writing of methods
+- Solve problems using methods
+- Apply default arguments, keyword arguments with methods
+- Explain method scope
+
+## Lesson
+
+# Methods
+
+```ruby
+def excited_greeting(first_name, last_name)
+  greeting = "Hi, #{first_name} #{last_name} here!"
+  greeting = greeting.upcase
+  return greeting
+end
+```
+
+* Explain all the "parts of speech"
+* Remove "return", still works
+* Move "return" earlier, see what happens
+* Pare it down to be more Rubyish
+
+```ruby
+def excited_greeting(first_name, last_name)
+  "Hi, #{first_name} #{last_name} here!".upcase
+end
+```
+## Scope
+
+```ruby
+product = 'WDI'
+
+def excited_greeting(first_name, last_name)
+  "Hi, #{first_name} #{last_name} here for #{product}!".upcase
+end
+
+puts excited_greeting('Alex', 'Grant') # age is not defined!
+puts "My first name is #{first_name}" # first_name is not defined!
+```
+
+* Explain call stack here when error occurs
+
+```ruby
+first_name = 'David'
+
+def excited_greeting(first_name, last_name)
+  "Hi, #{first_name} #{last_name} here!".upcase
+end
+
+puts excited_greeting('Alex', 'Fisher')
+puts "My first name is #{first_name}"
+```
+
+## Default and Keyword Arguments
+
+```ruby
+def excited_greeting(first_name, last_name, product = 'WDI')
+  "Hi, #{first_name} #{last_name} here for #{product}!".upcase
+end
+```
+
+* We can have more than one default argument
+* Multiple defaults tends to get confusing and isn't used as much
+
+```ruby
+def greeting(first_name, last_name, product = 'WDI', excited = true)
+  greeting = "Hi, #{first_name} #{last_name} here for #{product}!"
+  excited ? greeting.upcase : greeting
+end
+```
+
+* What if we want to not be excited, but keep the default product?
+* Same problem occurs if we switch the order around
+
+```ruby
+def greeting(first_name, last_name, product: 'WDI', excited: true)
+  greeting = "Hi, #{first_name} #{last_name} here for #{product}!"
+  excited ? greeting.upcase : greeting
+end
+```
+
+* Keyword arguments are new to Ruby 2.0
+* Highly recommend this approach for methods that take two or more arguments
+* In earlier versions we'd have to use hashes and a bunch of boilerplate
+
+```ruby
+def greeting(first_name, last_name, options = {})
+  product = options.key?(:product) ? options.delete(:product) : 'WDI'
+  excited = options.key?(:excited) ? options.delete(:excited) : true
+  raise ArgumentError, "unknown keyword: #{options.keys.first}" if !options.empty?
+
+  greeting = "Hi, #{first_name} #{last_name} here for #{product}!"
+  excited ? greeting.upcase : greeting
+end
+```
+
 
 ## Instructions
 
-Include explict step-by-step instructions about the goals of the assignment, and how to run the code.
+- Fork and clone this repo.
+- Run `bundle` to install gems.
+- All of the problems have an RSpec test suite written already, and you can run all of the test by running `rspec spec`, or an individual set of test by running `rspec spec/FILE_NAME_spec.rb`
 
-Make sure to wrap section of code in appropriate markdown like `ls -al`, and denote the language as below for longer sections:
+## Your Turn
 
-```ruby
-x = 2
-y = 3
-puts x + y
-```
+### Problem 1: Greeter
 
-## Bonus (Optional Section)
+Write a method that will return a string that greets that world such as 'Hello, world!'
+The method will optionally take a name as an argument, and uses that name instead of 'world',
+such as 'Hello, Sam!'
 
-### Spiral Path
+For example:
+
+greet() #=> 'Hello, World!'
+greet('Kim') #=> 'Hello, Kim!'
+
+### Problem 2: Calculate primes within a range
+
+Given a range of integers such as (20..100) return an array of all valid prime numbers.
+
+Hint: You may want to write a method called `is_prime?`, which you can reuse for each number. We may have seen a method like this yesterday.
+
+### Bonus Problem (optional): Spiral Path
 
 Write a function called "spiral" that takes an NxM (2d) array as input and returns a "spiral" path through the array, starting in the upper-left corner and moving clockwise.  Use the  language of your choice.
 
@@ -52,3 +156,8 @@ Credit and inspiration for the spiral path question goes to [Jesse Farmer](https
 ## Notes
 
 Make frequent Git commits, especially when you've completed an answer.
+
+## Additional Resources
+
+- [Wolfram Alpha on Primes (very interesting)](http://mathworld.wolfram.com/PrimeNumber.html)
+-
