@@ -42,7 +42,7 @@ def excited_greeting(first_name, last_name)
   "Hi, #{first_name} #{last_name} here for #{product}!".upcase
 end
 
-puts excited_greeting('Alex', 'Grant') # age is not defined!
+puts excited_greeting('Alex', 'Grant') # inside the method, product is not defined!
 puts "My first name is #{first_name}" # first_name is not defined!
 ```
 
